@@ -129,3 +129,8 @@ DELETE /cache
 
 Clears the cache and resets all statistics.
 
+Docker Support
+
+The project also includes a Dockerfile so the service can be containerized.
+
+
