@@ -140,14 +140,33 @@ DELETE /cache
 This endpoint clears all cache entries and resets the statistics.
 
 
-8. Docker Support
+8. Docker Support   {##Bonus Dockerisation task}
 
 The project includes a Dockerfile, allowing the entire application to be containerized.
 
 This ensures the service can run consistently across different environments.
 
-Build the Docker Image:docker build -t semantic-search .
-Run the Container:docker run -p 8000:8000 semantic-search
+## Running with Docker
+
+<img width="1600" height="534" alt="image" src="https://github.com/user-attachments/assets/057e8c71-9242-40bb-a334-6b1c99340c4f" />
+
+
+Build the image: docker build -t semantic-search-api .
+
+Run the container: docker run -p 8000:8000 semantic-search-api
+<img width="1855" height="607" alt="image" src="https://github.com/user-attachments/assets/33b9de89-1852-4964-bc67-d550a7d02355" />
+
+
+The API will be available at: http://localhost:8000/docs
+<img width="1756" height="782" alt="image" src="https://github.com/user-attachments/assets/9ec90b78-892d-4354-a776-1e57d98e45ad" />
+
+
+Now Bonus Dockerisation task::
+*the service runs inside Docker
+
+*FastAPI is exposed on port 8000
+
+*the semantic search system loads the FAISS index and embedding model on startup
 
 9. Final Notes
 
@@ -156,6 +175,7 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
 
