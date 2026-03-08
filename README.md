@@ -134,9 +134,11 @@ cache misses
 hit rate
 
 DELETE /cache
+<img width="572" height="122" alt="image" src="https://github.com/user-attachments/assets/1ca1aa23-3abb-404a-93f1-2340243dbd0c" />
+
 
 This endpoint clears all cache entries and resets the statistics.
-<img width="247" height="121" alt="image" src="https://github.com/user-attachments/assets/510aa172-7766-4efc-a6a9-af65b5403d81" />
+
 
 8. Docker Support
 
@@ -154,4 +156,5 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
