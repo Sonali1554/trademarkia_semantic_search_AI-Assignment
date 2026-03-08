@@ -128,14 +128,14 @@ Example output:
 <img width="188" height="189" alt="image" src="https://github.com/user-attachments/assets/104a8d8d-90f2-4e61-a6ae-3ffce9a6243b" />
 
 This includes:
-total cache entries
-cache hits
-cache misses
+total cache entries,
+cache hits,
+cache misses,
 hit rate
 
 DELETE /cache
-<img width="572" height="122" alt="image" src="https://github.com/user-attachments/assets/1ca1aa23-3abb-404a-93f1-2340243dbd0c" />
 
+<img width="572" height="122" alt="image" src="https://github.com/user-attachments/assets/1ca1aa23-3abb-404a-93f1-2340243dbd0c" />
 
 This endpoint clears all cache entries and resets the statistics.
 
@@ -156,5 +156,6 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
