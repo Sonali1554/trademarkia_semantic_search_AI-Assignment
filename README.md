@@ -1,94 +1,101 @@
 Semantic Search System with Fuzzy Clustering and Semantic Cache
 
 This project was built as part of the Trademarkia AI/ML Engineer assignment.
-The goal was to design a lightweight semantic search system that can understand the meaning of user queries instead of relying on exact keyword matching.
 
-The system works on the 20 Newsgroups dataset, which contains around 20,000 documents across different discussion topics. The project focuses on three main ideas:
+The goal of this project is to design a lightweight semantic search system that understands the meaning of user queries, rather than relying on simple keyword matching.
 
-Representing documents using vector embeddings
+The system is built using the 20 Newsgroups dataset, which contains around 20,000 documents across multiple discussion topics.
 
-Discovering semantic structure using fuzzy clustering
+The project focuses on three core ideas:
 
-Reducing redundant computation using a semantic cache
+*Representing documents using vector embeddings
+*Discovering semantic structure using fuzzy clustering
+*Reducing redundant computation using a semantic cache
 
-A FastAPI service is used to expose the system through a simple API.
+The system is exposed through a FastAPI service.
 
-Project Overview
+1. Project Overview
 
-Traditional search systems rely on keyword matching. This means two queries that mean the same thing but are written differently may return different results.
+Traditional search systems rely on keyword matching, which often fails when similar queries are phrased differently.
 
 For example:
 
 "space exploration missions"
-
 "future missions to space"
 
-Both queries have very similar meaning, but a keyword-based system might treat them as different queries.
+Even though both queries have the same meaning, a keyword-based system may treat them as unrelated queries.
 
-This project solves that problem by converting both documents and queries into vector embeddings, allowing the system to compare them based on semantic similarity.
+This project solves that problem by converting both documents and queries into vector embeddings, allowing similarity comparison based on semantic meaning.
 
-Dataset
+2. Dataset
 
-The project uses the 20 Newsgroups dataset, which contains roughly 20,000 posts across 20 categories such as technology, politics, sports, and science.
+The project uses the 20 Newsgroups dataset, which contains approximately 20,000 posts across 20 different categories, including:technology ,politics ,sports ,science
 
-Before processing, the dataset was cleaned to remove unnecessary metadata such as headers and formatting so that only the relevant text content was used for embedding and clustering.
+Preprocessing Steps
 
-Embeddings and Vector Search
+Before generating embeddings, the dataset was cleaned by:
+*Removing email headers
+*Removing signatures
+*Removing unnecessary formatting
+This ensures that only meaningful text content is used for embedding and clustering.
+
+3. Embeddings and Vector Search
 
 Each document is converted into a dense vector representation using the Sentence Transformers library.
 
-The model used is:
+Model Used: all-MiniLM-L6-v2
+Model Characteristics:384-dimensional embeddings , Lightweight and fast ,Strong semantic similarity performance
 
-all-MiniLM-L6-v2
+Embedding Pipeline:
+Document Text
+      ↓
+Sentence Transformer
+      ↓
+384-dimensional vector
 
-This model produces a 384-dimensional embedding vector for each document. These vectors capture the semantic meaning of the text.
+The generated embeddings are stored using FAISS, which enables efficient similarity search across large vector collections.
 
-Once the embeddings are generated, they are stored using FAISS, which is a library designed for efficient similarity search over large collections of vectors.
+FAISS allows the system to quickly retrieve documents that are semantically similar to a user query.
 
-This allows the system to quickly retrieve documents that are semantically similar to a user query.
+4. Fuzzy Clustering
 
-Fuzzy Clustering
+Although the dataset contains predefined categories, real-world topics often overlap.
 
-The dataset already contains labeled categories, but real-world topics often overlap.
+For example, a document discussing gun policy may belong to both:
 
-For example, a document discussing gun policy may belong to both politics and firearms discussions.
+politics
 
-To capture this behavior, the project uses Fuzzy C-Means clustering instead of traditional clustering.
+firearms discussions
 
-Unlike hard clustering, fuzzy clustering assigns each document a probability distribution across clusters.
+To capture this behavior, the project uses Fuzzy C-Means clustering.
 
-Example:
+Why Fuzzy Clustering?
 
-Document A
-Cluster 3 → 0.60
-Cluster 7 → 0.25
-Cluster 11 → 0.15
+Unlike traditional clustering, fuzzy clustering assigns probabilities instead of fixed labels.
 
-This means the document primarily belongs to cluster 3 but also shares characteristics with other clusters.
 
-This approach better reflects the real semantic structure of the dataset.
+5. Semantic Cache
 
-Semantic Cache
+A traditional cache only works when the exact same query is repeated.
 
-A traditional cache only works if the exact same query is repeated.
+However, users often ask similar questions using different wording.
 
-However, users often ask similar questions in different ways. To address this, a semantic cache was implemented.
+To address this problem, a semantic cache was implemented.
 
-When a query is received:
+Cache Workflow
 
-The query is converted into an embedding.
+i.The query is converted into an embedding.
 
-The embedding is compared with embeddings of previous queries stored in the cache.
+ii.The embedding is compared with embeddings of previous queries stored in the cache.
 
-If the similarity is above a certain threshold, the cached result is returned.
+iii. If similarity exceeds a threshold → cached result is returned.
 
-Otherwise, the query is processed normally and the result is stored in the cache.
+iv.Otherwise → the query is processed normally and stored in the cache.
 
-This approach allows the system to reuse results for semantically similar queries, improving efficiency.
+Benefit: This allows the system to reuse results for semantically similar queries, significantly reducing repeated computation.
 
-API Service
+6. API Service
 <img width="1801" height="474" alt="image" src="https://github.com/user-attachments/assets/cadd03ca-8275-4fe9-97d1-f3da4aec3a98" />
-
 
 The system is exposed through a FastAPI service.
 
@@ -98,20 +105,17 @@ http://localhost:8000/docs
 
 The following endpoints are available.
 
+7. API Endpoints
 POST /query
 
 This endpoint accepts a natural language query and returns the most relevant documents.
 
-Example request:
-
+Example Request
 {
   "query": "space exploration missions"
 }
-
-Example response:
-
+Example Response
 <img width="1614" height="504" alt="image" src="https://github.com/user-attachments/assets/8e5e8817-daaa-4567-9eff-c5216e197624" />
-
 
 The response also indicates whether the result was retrieved from the semantic cache.
 
@@ -123,14 +127,34 @@ Example output:
 
 <img width="188" height="189" alt="image" src="https://github.com/user-attachments/assets/104a8d8d-90f2-4e61-a6ae-3ffce9a6243b" />
 
+This includes:
+
+total cache entries
+
+cache hits
+
+cache misses
+
+hit rate
+
 DELETE /cache
 <img width="247" height="121" alt="image" src="https://github.com/user-attachments/assets/510aa172-7766-4efc-a6a9-af65b5403d81" />
 
+This endpoint clears all cache entries and resets the statistics.
 
-Clears the cache and resets all statistics.
+8. Docker Support
 
-Docker Support
+The project includes a Dockerfile, allowing the entire application to be containerized.
 
-The project also includes a Dockerfile so the service can be containerized.
+This ensures the service can run consistently across different environments.
 
+Build the Docker Image:docker build -t semantic-search .
+Run the Container:docker run -p 8000:8000 semantic-search
 
+9. Final Notes
+
+This project demonstrates how semantic embeddings, fuzzy clustering, and caching can be combined to build a more intelligent search system.
+
+Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
+
+The semantic cache further improves performance by avoiding repeated computations for similar queries.
