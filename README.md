@@ -168,18 +168,18 @@ Start the Service Using Docker Compose- docker compose up --build
 
 Docker Compose will:
 
-Build the Docker image
+Build the Docker image : trademarkia_semantic_search-semantic-search
 <img width="1848" height="635" alt="image" src="https://github.com/user-attachments/assets/9999931a-d340-4d37-95ae-d7fb9ef649ed" />
 
 
-Create the container
+Create the container : trademarkia_semantic_search
 <img width="1856" height="592" alt="image" src="https://github.com/user-attachments/assets/637503a5-7b69-469f-a35a-b60491afccac" />
 
 
 Start the FastAPI service automatically
 
 <img width="922" height="183" alt="image" src="https://github.com/user-attachments/assets/54eaf041-c182-4b21-8b4b-737852312dea" />
-The API can again be accessed at: http://localhost:8000/docs
+The API can again be accessed at:  http://localhost:8000/docs
 
 
 ## Now Bonus Dockerisation task:
@@ -201,6 +201,7 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
 
