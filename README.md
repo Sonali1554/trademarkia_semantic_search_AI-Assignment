@@ -160,11 +160,15 @@ The API will be available at: http://localhost:8000/docs
 <img width="1756" height="782" alt="image" src="https://github.com/user-attachments/assets/9ec90b78-892d-4354-a776-1e57d98e45ad" />
 
 
-Now Bonus Dockerisation task:
+## Now Bonus Dockerisation task:
+<img width="675" height="297" alt="image" src="https://github.com/user-attachments/assets/07aa608b-5679-4bf5-b9b2-993019002b9a" />
+
 
 *the service runs inside Docker
 
 *FastAPI is exposed on port 8000
+
+*Additionally, a docker-compose configuration is provided to simplify container orchestration and startup {docker-compose.yml}.
 
 *the semantic search system loads the FAISS index and embedding model on startup
 
@@ -175,6 +179,7 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
 
