@@ -154,6 +154,9 @@ Build the  docker image: docker build -t semantic-search-api .
 
 
 
+
+
+
 Run the docker  container: docker run -p 8000:8000 semantic-search-api
 <img width="1855" height="607" alt="image" src="https://github.com/user-attachments/assets/33b9de89-1852-4964-bc67-d550a7d02355" />
 
@@ -203,6 +206,7 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
 
