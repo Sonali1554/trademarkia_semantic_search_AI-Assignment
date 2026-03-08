@@ -147,17 +147,39 @@ The project includes a Dockerfile, allowing the entire application to be contain
 ## Running with Docker
 
 
-Build the image: docker build -t semantic-search-api .
+Build the  docker image: docker build -t semantic-search-api .
 <img width="1600" height="534" alt="image" src="https://github.com/user-attachments/assets/057e8c71-9242-40bb-a334-6b1c99340c4f" />
 
 
 
-Run the container: docker run -p 8000:8000 semantic-search-api
+Run the docker  container: docker run -p 8000:8000 semantic-search-api
 <img width="1855" height="607" alt="image" src="https://github.com/user-attachments/assets/33b9de89-1852-4964-bc67-d550a7d02355" />
 
 
 The API will be available at: http://localhost:8000/docs
 <img width="1756" height="782" alt="image" src="https://github.com/user-attachments/assets/9ec90b78-892d-4354-a776-1e57d98e45ad" />
+
+## Running with Docker Compose 
+In addition to the Dockerfile, the project also includes a docker-compose.yml file.
+Docker Compose simplifies container orchestration and allows the service to be started with a single command.
+Start the Service Using Docker Compose- docker compose up --build
+<img width="577" height="322" alt="image" src="https://github.com/user-attachments/assets/d09ed127-4c99-41b6-a4ff-aedc4cdafc23" />
+
+
+Docker Compose will:
+
+Build the Docker image
+<img width="1848" height="635" alt="image" src="https://github.com/user-attachments/assets/9999931a-d340-4d37-95ae-d7fb9ef649ed" />
+
+
+Create the container
+<img width="1856" height="592" alt="image" src="https://github.com/user-attachments/assets/637503a5-7b69-469f-a35a-b60491afccac" />
+
+
+Start the FastAPI service automatically
+
+<img width="922" height="183" alt="image" src="https://github.com/user-attachments/assets/54eaf041-c182-4b21-8b4b-737852312dea" />
+The API can again be accessed at: http://localhost:8000/docs
 
 
 ## Now Bonus Dockerisation task:
@@ -179,6 +201,7 @@ This project demonstrates how semantic embeddings, fuzzy clustering, and caching
 Instead of relying on exact keyword matching, the system retrieves results based on semantic meaning, making the search process more flexible and efficient.
 
 The semantic cache further improves performance by avoiding repeated computations for similar queries.
+
 
 
 
