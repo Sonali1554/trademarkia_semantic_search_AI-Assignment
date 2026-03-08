@@ -87,6 +87,8 @@ Otherwise, the query is processed normally and the result is stored in the cache
 This approach allows the system to reuse results for semantically similar queries, improving efficiency.
 
 API Service
+<img width="1801" height="474" alt="image" src="https://github.com/user-attachments/assets/cadd03ca-8275-4fe9-97d1-f3da4aec3a98" />
+
 
 The system is exposed through a FastAPI service.
 
@@ -108,14 +110,8 @@ Example request:
 
 Example response:
 
-{
-  "query": "...",
-  "cache_hit": true,
-  "matched_query": "...",
-  "similarity_score": 0.91,
-  "result": "...documents...",
-  "dominant_cluster": 3
-}
+<img width="1614" height="504" alt="image" src="https://github.com/user-attachments/assets/8e5e8817-daaa-4567-9eff-c5216e197624" />
+
 
 The response also indicates whether the result was retrieved from the semantic cache.
 
@@ -125,12 +121,11 @@ Returns statistics about the current cache state.
 
 Example output:
 
-{
-  "total_entries": 10,
-  "hit_count": 4,
-  "miss_count": 6,
-  "hit_rate": 0.40
-}
+<img width="188" height="189" alt="image" src="https://github.com/user-attachments/assets/104a8d8d-90f2-4e61-a6ae-3ffce9a6243b" />
+
 DELETE /cache
+<img width="247" height="121" alt="image" src="https://github.com/user-attachments/assets/510aa172-7766-4efc-a6a9-af65b5403d81" />
+
 
 Clears the cache and resets all statistics.
+
