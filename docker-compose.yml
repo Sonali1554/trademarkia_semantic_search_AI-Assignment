@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  semantic-search:
+    build: .
+    container_name: trademarkia_semantic_search
+    ports:
+      - "8000:8000"
+    restart: always
