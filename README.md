@@ -1,3 +1,8 @@
+## 🎥 Project Demo
+
+Watch the complete project demonstration here:
+
+[▶️ Watch Demo Video](https://drive.google.com/file/d/1OqkSwFiij3ywwV-ZtRVBx6b2kNpJTeiK/view?usp=sharing)
 ## Semantic Search System with Fuzzy Clustering and Semantic Cache
 
 This project was built as part of the Trademarkia AI/ML Engineer assignment.
